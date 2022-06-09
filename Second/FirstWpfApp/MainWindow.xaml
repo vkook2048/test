@@ -1,0 +1,44 @@
+﻿<Window x:Class="FirstWpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FirstWpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="547" Width="985">
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="-0.136"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <TextBlock x:Name="textName" HorizontalAlignment="Left" Margin="60,42,0,0" TextWrapping="Wrap" Text="Ваше имя:" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS" Foreground="#FFD41E1E"/>
+        <TextBox HorizontalAlignment="Left" Height="35" Margin="190,41,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="198" FontSize="20"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="47" Margin="60,143,0,0" VerticalAlignment="Top" Width="174" Click="Button_Click"/>
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Height="99" Margin="471,111,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button x:Name="button2" Content="" HorizontalAlignment="Left" Height="99" Margin="584,111,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button x:Name="button4" Content="" HorizontalAlignment="Left" Height="99" Margin="471,215,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button x:Name="button5" Content="" HorizontalAlignment="Left" Height="99" Margin="584,215,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button x:Name="button3" Content="" HorizontalAlignment="Left" Height="99" Margin="696,111,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button x:Name="button6" Content="" HorizontalAlignment="Left" Height="99" Margin="696,215,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button x:Name="button7" Content="" HorizontalAlignment="Left" Height="99" Margin="471,319,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button x:Name="button8" Content="" HorizontalAlignment="Left" Height="99" Margin="584,319,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button x:Name="button9" Content="" HorizontalAlignment="Left" Height="99" Margin="696,319,0,0" VerticalAlignment="Top" Width="107" FontSize="36" Click="Button_Click_0"/>
+        <Button Content="New Game" HorizontalAlignment="Left" Height="35" Margin="495,41,0,0" VerticalAlignment="Top" Width="149" Click="Button_Click_1"/>
+        <ComboBox x:Name="combobox" HorizontalAlignment="Left" Height="31" Margin="60,93,0,0" VerticalAlignment="Top" Width="163" FontSize="20">
+            <TextBlock Text="choose1"/>
+            <TextBlock Text="choose2"/>
+            <TextBlock Text="choose3"/>
+            <TextBlock Text="choose4"/>
+        </ComboBox>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="60,209,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="60,247,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="60,275,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="60,302,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="173" Margin="68,322,0,0" VerticalAlignment="Top" Width="256" Source="ФэйДу.jpg"/>
+
+    </Grid>
+</Window>
