@@ -28,7 +28,6 @@ namespace _2048_
             _buttons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16 };
             Clear();
         }
-        //rnd.Next(0, lines.Length)
         Random rnd = new Random();
 
         private void button_new_game_Click(object sender, RoutedEventArgs e)
@@ -50,7 +49,7 @@ namespace _2048_
             button_left.IsEnabled = true;
             button_right.IsEnabled = true;
         }
-
+        int check = 0;
         private void button_up_Click(object sender, RoutedEventArgs e)
         {
             TapUp();
@@ -88,6 +87,7 @@ namespace _2048_
                         _buttons[i].Content = (int)_buttons[i + 1].Content + (int)_buttons[i].Content;
                         _buttons[i + 1].Content = " ";
                         _buttons[i].IsEnabled = true;
+                        check++;
                     }
                     
             }
@@ -109,6 +109,7 @@ namespace _2048_
                         _buttons[i].Content = (int)_buttons[i - 1].Content + (int)_buttons[i].Content;
                         _buttons[i - 1].Content = " ";
                         _buttons[i].IsEnabled = true;
+                        check++;
                     }
             }
             MoveRight();
@@ -128,6 +129,7 @@ namespace _2048_
                         _buttons[i].Content = (int)_buttons[i + 4].Content + (int)_buttons[i].Content;
                         _buttons[i + 4].Content = " ";
                         _buttons[i].IsEnabled = true;
+                        check++;
                     }
             }
             MoveUp();
@@ -147,6 +149,7 @@ namespace _2048_
                         _buttons[i].Content = (int)_buttons[i - 4].Content + (int)_buttons[i].Content;
                         _buttons[i - 4].Content = " ";
                         _buttons[i].IsEnabled = true;
+                        check++;
                     }
             }
             MoveDown();
@@ -155,25 +158,29 @@ namespace _2048_
         int count = 0;
         void AddNewNumber()
         {
-            int[] numbers = new int[] { 2, 2, 4, 2, 2 };
-            int index = rnd.Next(0, numbers.Length);
-            int button_index = rnd.Next(0, _buttons.Length);
-            while (_buttons[button_index].Content.ToString() != " ")
+            if(check > 0)
             {
-                count = 0;
-                foreach (var item in _buttons)
+                int[] numbers = new int[] { 2, 2, 4, 2, 2 };
+                int index = rnd.Next(0, numbers.Length);
+                int button_index = rnd.Next(0, _buttons.Length);
+                while (_buttons[button_index].Content.ToString() != " ")
                 {
-                    if (item.Content.ToString() != " ")
-                        count++;
+                    count = 0;
+                    foreach (var item in _buttons)
+                    {
+                        if (item.Content.ToString() != " ")
+                            count++;
+                    }
+                    if (count == 16)
+                    {
+                        EndGame();
+                        break;
+                    }
+                    button_index = rnd.Next(0, _buttons.Length);
                 }
-                if (count == 16)
-                {
-                    EndGame();
-                    break;
-                }
-                button_index = rnd.Next(0, _buttons.Length);
+                _buttons[button_index].Content = numbers[index];
             }
-            _buttons[button_index].Content = numbers[index];
+            check = 0;
         }
         void MoveLeft()
         {
@@ -185,6 +192,7 @@ namespace _2048_
                     {
                         _buttons[i - 1].Content = _buttons[i].Content;
                         _buttons[i].Content = " ";
+                        check++;
                         if (i != 1 && i != 5 && i != 9 && i != 13)
                         {
                             i--;
@@ -204,6 +212,7 @@ namespace _2048_
                     {
                         _buttons[i + 1].Content = _buttons[i].Content;
                         _buttons[i].Content = " ";
+                        check++;
                         if (i != 2 && i != 6 && i != 10 && i != 14)
                         {
                             i++;
@@ -222,6 +231,7 @@ namespace _2048_
                     {
                         _buttons[i - 4].Content = _buttons[i].Content;
                         _buttons[i].Content = " ";
+                        check++;
                         if (i != 4 && i != 5 && i != 6 && i != 7)
                         {
                             i -= 4;
@@ -241,6 +251,7 @@ namespace _2048_
                     {
                         _buttons[i + 4].Content = _buttons[i].Content;
                         _buttons[i].Content = " ";
+                        check++;
                         if (i != 8 && i != 9 && i != 10 && i != 11)
                         {
                             i += 4;
