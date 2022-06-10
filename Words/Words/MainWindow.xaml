@@ -1,0 +1,70 @@
+﻿<Window x:Class="Words.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Words"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="1000">
+    <Grid>
+        <StackPanel Margin="0,100,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Text="-" x:Name="letter1" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter2" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter3" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter4" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter5" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter6" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter7" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter8" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter9" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter10" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter11" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter12" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter13" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter14" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter15" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter16" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter17" Margin="10"/>
+            <TextBlock Text="-" x:Name="letter18" Margin="10"/>
+
+        </StackPanel>
+
+        <WrapPanel Margin="0,200,0,90">
+            <Button x:Name="button1" Content="А"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button2" Content="Б"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button3" Content="В"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button4" Content="Г"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button5" Content="Д"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button6" Content="Е"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button7" Content="Ё"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button8" Content="Ж"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button9" Content="З"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button10" Content="И"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button11" Content="Й"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button12" Content="К"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button13" Content="Л"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button14" Content="М"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button15" Content="Н"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button16" Content="О"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button17" Content="П"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button18" Content="Р"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button19" Content="С"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button20" Content="Т"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button21" Content="У"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button22" Content="Ф"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button23" Content="Х"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button24" Content="Ц"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button25" Content="Ч"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button26" Content="Ш"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button27" Content="Щ"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button28" Content="Ъ"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button29" Content="Ы"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button30" Content="Ь"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button31" Content="Э"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button32" Content="Ю"  Click="Button_Click"  Margin="5"/>
+            <Button x:Name="button33" Content="Я"  Click="Button_Click"  Margin="5"/>
+        </WrapPanel>
+        <Button x:Name="StartNewGame" Content="Start New Game" HorizontalAlignment="Center" Margin="0,360,0,0" VerticalAlignment="Top" Height="57" Width="174" Click="StartNewGame_Click" FontSize="20"/>
+        <TextBlock x:Name="Attempts" HorizontalAlignment="Left" Margin="823,207,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.167,-0.028" Height="28" Width="114" FontSize="16"/>
+    </Grid>
+</Window>

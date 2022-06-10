@@ -1,0 +1,33 @@
+﻿<Window x:Class="_2048_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_2048_"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="131,92,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button2" Content="" HorizontalAlignment="Left" Margin="180,92,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button3" Content="" HorizontalAlignment="Left" Margin="229,92,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button4" Content="" HorizontalAlignment="Left" Margin="278,92,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button5" Content="" HorizontalAlignment="Left" Margin="131,141,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button6" Content="" HorizontalAlignment="Left" Margin="180,141,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button7" Content="" HorizontalAlignment="Left" Margin="229,141,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button8" Content="" HorizontalAlignment="Left" Margin="278,141,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button9" Content="" HorizontalAlignment="Left" Margin="131,190,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button10" Content="" HorizontalAlignment="Left" Margin="180,190,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button11" Content="" HorizontalAlignment="Left" Margin="229,190,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button12" Content="" HorizontalAlignment="Left" Margin="278,190,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button13" Content="" HorizontalAlignment="Left" Margin="131,239,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button14" Content="" HorizontalAlignment="Left" Margin="180,239,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button15" Content="" HorizontalAlignment="Left" Margin="229,239,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button16" Content="" HorizontalAlignment="Left" Margin="278,239,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
+        <Button x:Name="button_up" Content="Up" HorizontalAlignment="Left" Margin="608,203,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_up_Click"/>
+        <Button x:Name="button_down" Content="Down" HorizontalAlignment="Left" Margin="608,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_down_Click"/>
+        <Button x:Name="button_left" Content="Left" HorizontalAlignment="Left" Margin="536,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_left_Click"/>
+        <Button x:Name="button_right" Content="Right" HorizontalAlignment="Left" Margin="683,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_right_Click"/>
+        <Button x:Name="button_new_game" Content="New Game" HorizontalAlignment="Left" Margin="515,70,0,0" VerticalAlignment="Top" Height="44" Width="163" Click="button_new_game_Click"/>
+
+    </Grid>
+</Window>
