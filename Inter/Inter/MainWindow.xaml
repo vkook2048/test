@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="579" Width="800">
     <Grid>
-        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="65,49,0,0" VerticalAlignment="Top" Click="Button1_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button2" Content="" HorizontalAlignment="Left" Margin="191,49,0,0" VerticalAlignment="Top" Click="Button2_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button5" Content="" HorizontalAlignment="Left" Margin="191,177,0,0" VerticalAlignment="Top" Click="Button5_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button4" Content="" HorizontalAlignment="Left" Margin="65,177,0,0" VerticalAlignment="Top" Click="Button4_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button6" Content="" HorizontalAlignment="Left" Margin="315,177,0,0" VerticalAlignment="Top" Click="Button6_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button3" Content="" HorizontalAlignment="Left" Margin="315,49,0,0" VerticalAlignment="Top" Click="Button3_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button8" Content="" HorizontalAlignment="Left" Margin="191,304,0,0" VerticalAlignment="Top" Click="Button8_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button7" Content="" HorizontalAlignment="Left" Margin="65,304,0,0" VerticalAlignment="Top" Click="Button7_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button9" Content="" HorizontalAlignment="Left" Margin="315,304,0,0" VerticalAlignment="Top" Click="Button9_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="65,49,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button2" Content="" HorizontalAlignment="Left" Margin="191,49,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button5" Content="" HorizontalAlignment="Left" Margin="191,177,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button4" Content="" HorizontalAlignment="Left" Margin="65,177,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button6" Content="" HorizontalAlignment="Left" Margin="315,177,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button3" Content="" HorizontalAlignment="Left" Margin="315,49,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button8" Content="" HorizontalAlignment="Left" Margin="191,304,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button7" Content="" HorizontalAlignment="Left" Margin="65,304,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
+        <Button x:Name="button9" Content="" HorizontalAlignment="Left" Margin="315,304,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
         <Button x:Name="newgamebutton" Content="New Game" HorizontalAlignment="Left" Margin="487,121,0,0" VerticalAlignment="Top" Height="83" Width="254" Click="newgamebutton_Click"/>
     </Grid>
 </Window>

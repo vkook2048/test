@@ -30,53 +30,13 @@ namespace Inter
 
         Game game;
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            game.UserClick(0);
+            Button btn = (Button)sender;
+            game.UserClick(Array.IndexOf(Buttons, btn));
         }
 
-        private void Button2_Click(object sender, RoutedEventArgs e)
-        {
-            game.UserClick(1);
-        }
 
-        private void Button3_Click(object sender, RoutedEventArgs e)
-        {
-            game.UserClick(2);
-        }
-
-        private void Button4_Click(object sender, RoutedEventArgs e)
-        {
-            game.UserClick(3);
-
-        }
-
-        private void Button5_Click(object sender, RoutedEventArgs e)
-        {
-            game.UserClick(4);
-        }
-
-        private void Button6_Click(object sender, RoutedEventArgs e)
-        {
-            game.UserClick(5);
-        }
-
-        private void Button7_Click(object sender, RoutedEventArgs e)
-        {
-            game.UserClick(6);
-        }
-
-        private void Button8_Click(object sender, RoutedEventArgs e)
-        {
-            game.UserClick(7);
-        }
-
-        private void Button9_Click(object sender, RoutedEventArgs e)
-        {
-            game.UserClick(8);
-        }
-        
-        
         public void EndGame()
         {
             if (game.IsWin())
@@ -112,7 +72,7 @@ namespace Inter
             StartNewGame();
         }
 
-        public void UpdateView()
+        public void UpdateView(Game currentgame)
         {
             // 2 строчки  + нижння сбда |done
             // 9 строчек кнопка = клетка поля |done
