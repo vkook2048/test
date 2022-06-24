@@ -10,12 +10,6 @@ namespace Inter
         
         int current { get; set; }
         public string[] Field { get; set; }
-        public Game()
-        {
-            players = new string[] { "X", "O" };
-            current = 0;
-            Field = new string[] { "", "", "", "", "", "", "", "", "" };
-        }
 
         private IView _view;
 
@@ -83,9 +77,6 @@ namespace Inter
 
         public void UserClick(int index)
         {
-            //TODO 9 > index >= 0 |done
-            //TODO no повтор |done
-            //throw new Exception("fgfgfgf");
             if (index > 8 || index < 0  || Field[index] != "")
             {
                 throw new Exception("problem with index");
@@ -104,7 +95,7 @@ namespace Inter
             
         }
 
-        public void StartNewGame()
+        public void Start()
         {
             _view.UpdateView(this);
         }

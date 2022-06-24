@@ -86,7 +86,5 @@ namespace UnitTestProject1
             Assert.IsTrue(game.CurrentPlayer() == "O", "Not O");
         }
 
-
-        // TODO Test: draw, winn x, winn o |done
     }
 }

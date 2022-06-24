@@ -8,9 +8,15 @@ namespace Inter
     {
         public Game Game { get; private set; }
 
-        public Controller()
+        public void StartNewGame(IView view)
         {
-            //Game = game;
+            Game = new Game(view);
+            Game.Start();
+        }
+
+        public void UserClick(int index)
+        {
+            Game.UserClick(index);
         }
     }
 }

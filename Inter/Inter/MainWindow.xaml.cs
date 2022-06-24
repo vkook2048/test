@@ -24,81 +24,68 @@ namespace Inter
         public MainWindow()
         {
             InitializeComponent();
-            game = new Game(this);
             Buttons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
+            Loaded += OnWindowLoaded;
         }
 
-        Game game;
+        private void OnWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            _controller.StartNewGame(this);
+        }
+
+        Controller _controller = new Controller();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            game.UserClick(Array.IndexOf(Buttons, btn));
+            _controller.UserClick(Array.IndexOf(Buttons, btn));
         }
 
 
-        public void EndGame()
+        public void EndGame(Game game)
         {
             if (game.IsWin())
             {
                 MessageBox.Show($"Game over. Winner: {game.CurrentPlayer()}");
-                Block();
             }
             else if (game.IsDraw())
             {
                 MessageBox.Show("Game ended in a draw");
-                Block();
             }
         }
         void StartNewGame()
         {
-            game = new Game(this);
-            foreach (var item in Buttons)
-            {
-                item.IsEnabled = true;
-            }
-            TranslateField();
+            _controller.StartNewGame(this);
         }
-        public void Block()
-        {
-            foreach (var item in Buttons)
-            {
-                item.IsEnabled = false;
-            }
-        }
-
         private void newgamebutton_Click(object sender, RoutedEventArgs e)
         {
             StartNewGame();
         }
 
-        public void UpdateView(Game currentgame)
+        public void UpdateView(Game game)
         {
-            // 2 строчки  + нижння сбда |done
-            // 9 строчек кнопка = клетка поля |done
-            
+            bool isEnd = game.IsDraw() || game.IsWin();
 
-            TranslateField();
+            TranslateField(game);
             foreach (var item in Buttons)
             {
-                if (item.Content.ToString() == "X" || item.Content.ToString() == "O")
+                if (item.Content.ToString() == "X" || item.Content.ToString() == "O" || isEnd)
                 {
                     item.IsEnabled = false;
                 }
+                else
+                {
+                    item.IsEnabled = true;
+                }
             }
-            EndGame();
+            EndGame(game);
         }
-        public void TranslateField()
+        public void TranslateField(Game game)
         {
-            button1.Content = game.Field[0];
-            button2.Content = game.Field[1];
-            button3.Content = game.Field[2];
-            button4.Content = game.Field[3];
-            button5.Content = game.Field[4];
-            button6.Content = game.Field[5];
-            button7.Content = game.Field[6];
-            button8.Content = game.Field[7];
-            button9.Content = game.Field[8];
+            for (int i = 0; i < Buttons.Length; i++)
+            {
+                Buttons[i].Content = game.Field[i];
+            }
         }
         
     }
