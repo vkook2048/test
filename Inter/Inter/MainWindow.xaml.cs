@@ -15,6 +15,26 @@ using System.Windows.Shapes;
 
 namespace Inter
 {
+    // xaml
+
+    // TextBlock (font fontweight fontstyle fontsize heigth width, horizontal aligment, vertical aligment)
+    // TexBox
+    // Button 
+    // Border (corner radius)
+    // Stack panel (orientation)
+    // Grid (column definition, row definition, grid.row)
+    // scroll view
+
+    // подсвечивается последний ход
+    // крестики нолики рисовать либо картинка либо графика
+    // mouse over эффект (подсвет кнопки при наведени)
+    // поле (красивое)
+    // линия выигрыша
+    // надпись о выигыше в самом окне
+    // кнопка новой игры картинкой
+
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
