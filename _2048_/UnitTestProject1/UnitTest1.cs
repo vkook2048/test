@@ -20,6 +20,11 @@ namespace UnitTestProject1
 
     // просто добавил еще одну стргоку для комита
 
+    // генерация новых чисел
+    // возможность сдвинуть
+    // проверка не закончилась ли игра (после генерации проверить можно ли сдвинуть в любую сторону)
+
+
     [TestClass]
     public class UnitTest1
     {
@@ -282,6 +287,94 @@ namespace UnitTestProject1
             };
 
             Assert.IsTrue(IsBoardsEqual(expected, board));
+        }
+        [TestMethod]
+        public void T11_TestAddNewNumber1()
+        {
+            var board = new int[][] {
+            new int[] { 0, 2, 4, 2 },
+            new int[] { 4, 2, 4, 2 },
+            new int[] { 2, 4, 2, 4 },
+            new int[] { 4, 2, 4, 2 }
+            };
+
+            board = Game2048.GenerateNewNumber(board);
+            board = Game2048.MoveRight(board);
+
+            var expected = new int[][] {
+            new int[] { 0, 4, 4, 2 },
+            new int[] { 4, 2, 4, 2 },
+            new int[] { 2, 4, 2, 4 },
+            new int[] { 4, 2, 4, 2 }
+            };
+
+            Assert.IsTrue(IsBoardsEqual(expected, board), $"{board[0][0]}");
+        }
+        [TestMethod]
+        public void T12_TestAddNewNumber2()
+        {
+            var board = new int[][] {
+            new int[] { 0, 2, 4, 2 },
+            new int[] { 4, 2, 4, 2 },
+            new int[] { 2, 4, 2, 4 },
+            new int[] { 4, 2, 4, 2 }
+            };
+
+            board = Game2048.MoveRight(board);
+            board = Game2048.GenerateNewNumber(board);
+
+
+            var expected = new int[][] {
+            new int[] { 0, 2, 4, 2 },
+            new int[] { 4, 2, 4, 2 },
+            new int[] { 2, 4, 2, 4 },
+            new int[] { 4, 2, 4, 2 }
+            };
+
+            Assert.IsTrue(IsBoardsEqual(expected, board), $"{board[0][0]}");
+        }
+        [TestMethod]
+        public void T13_IsEnd1()
+        {
+            var board = new int[][] {
+            new int[] { 4, 2, 4, 2 },
+            new int[] { 4, 2, 4, 2 },
+            new int[] { 2, 4, 2, 4 },
+            new int[] { 4, 2, 4, 2 }
+            };
+
+            bool isEnd = Game2048.IsEnd(board);
+
+            Assert.IsTrue(isEnd, "тест специально сделан провальным");
+        }
+        [TestMethod]
+        public void T14_IsEnd2()
+        {
+            var board = new int[][] {
+            new int[] { 0, 0, 0, 0 },
+            new int[] { 0, 0, 0, 0 },
+            new int[] { 0, 0, 0, 0 },
+            new int[] { 0, 0, 0, 0 }
+            };
+
+            bool isEnd = Game2048.IsEnd(board);
+            bool canAdd = Game2048.CanGenerateNew(board);
+
+            Assert.IsTrue(isEnd, "тест специально сделан провальным");
+        }
+        [TestMethod]
+        public void T15_IsEnd3()
+        {
+            var board = new int[][] {
+            new int[] { 2, 4, 2, 4 },
+            new int[] { 4, 2, 4, 2 },
+            new int[] { 2, 4, 2, 4 },
+            new int[] { 4, 2, 4, 2 }
+            };
+
+            bool isEnd = Game2048.IsEnd(board);
+
+            Assert.IsTrue(isEnd);
         }
     }
 }

@@ -6,16 +6,29 @@ namespace _2048_
 {
     public class Game2048
     {
-       /* public int[][] Board = new int[][] { 
+        /* public int[][] Board = new int[][] { 
+             new int[] { 0, 0, 0, 0 },
+             new int[] { 0, 0, 0, 0 },
+             new int[] { 0, 0, 0, 0 },
+             new int[] { 0, 0, 0, 0 }
+         };*/
+        static bool IsMoved = true;
+
+        public static int[][] MoveDown(int[][] board)
+        {
+            int[][] saver = new int[][] {
             new int[] { 0, 0, 0, 0 },
             new int[] { 0, 0, 0, 0 },
             new int[] { 0, 0, 0, 0 },
             new int[] { 0, 0, 0, 0 }
-        };*/
-
-        public static int[][] MoveDown(int[][] board)
-        {
-            // TODO
+            };
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    saver[i][j] = board[i][j];
+                }
+            }
             int count = 0;
             while (count < 3)
             {
@@ -34,6 +47,7 @@ namespace _2048_
                 }
             }
             board = Move(board);
+            IsMoved = !IsBoardsEqual(saver, board);
             return board;
         }
         private static int[][] Move(int[][] board)
@@ -54,24 +68,12 @@ namespace _2048_
 
         public static int[][] Rotate(int[][] board)
         {
-            // TODO
-            // если что это "поворот"
+
             int[][] helper = new int[][] {
             new int[] { 0, 0, 0, 0 },
             new int[] { 0, 0, 0, 0 },
             new int[] { 0, 0, 0, 0 },
             new int[] { 0, 0, 0, 0 } };
-
-           /*for (int i = 0; i < 4; i++)
-            {
-                //for (int j = 4; j > 0; j--)
-                {
-                    helper[3 - i][3] = board[i][0];
-                    helper[3 - i][2] = board[i][1];
-                    helper[3 - i][1] = board[i][2];
-                    helper[3 - i][0] = board[i][3];
-                }
-            }*/
 
             helper[0][3] = board[0][0];
             helper[1][3] = board[0][1];
@@ -126,6 +128,103 @@ namespace _2048_
             board = Rotate(board);
             return board;
 
+        }
+
+        private static bool IsBoardsEqual(int[][] board1, int[][] board2)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (board1[i][j] != board2[i][j])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public static bool CanGenerateNew(int[][] board)
+        {
+            int count = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (board[i][j] == 0)
+                    {
+                        count++;
+                    }
+                }
+            }
+            if (IsMoved && count > 0 || count == 16)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static int[][] GenerateNewNumber(int[][] board)
+        {
+            if (CanGenerateNew(board))
+            {
+                Random rnd = new Random();
+                int first = rnd.Next(0, 3);
+                int second = rnd.Next(0, 3);
+                while (board[first][second] != 0)
+                {
+                    first = rnd.Next(0, 3);
+                    second = rnd.Next(0, 3);
+                }
+                int[] variants = new int[] { 2, 2, 2, 4, 2, 2 };
+                board[first][second] = variants[rnd.Next(0, variants.Length)];
+            }
+            return board;
+        }
+        public static bool IsEnd(int[][] board)
+        {
+            int[][] tester = new int[][] {
+            new int[] { 0, 0, 0, 0 },
+            new int[] { 0, 0, 0, 0 },
+            new int[] { 0, 0, 0, 0 },
+            new int[] { 0, 0, 0, 0 }
+            };
+            int count = 0;
+
+            tester = MoveDown(board);
+            if (!IsMoved)
+                count++;
+            tester = MoveUp(board);
+            if (!IsMoved)
+                count++;
+            tester = MoveLeft(board);
+            if (!IsMoved)
+                count++;
+            tester = MoveRight(board);
+            if (!IsMoved)
+                count++;
+            if(!CanGenerateNew(board))
+                count++;
+
+            if (count == 5)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static int[][] AfterTappingAndMoving(int[][] board)
+        {
+            board = GenerateNewNumber(board);
+            IsEnd(board);
+            return board;
         }
 
     }
