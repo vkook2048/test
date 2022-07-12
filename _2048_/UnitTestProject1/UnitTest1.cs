@@ -80,7 +80,7 @@ namespace UnitTestProject1
             new int[] { 0, 0, 2, 2 }
             };
 
-            Assert.IsTrue(IsBoardsEqual(expected, board));
+            Assert.IsTrue(IsBoardsEqual(expected, board), $"{board[2][2]}");
         }
 
         [TestMethod]
@@ -168,7 +168,7 @@ namespace UnitTestProject1
             new int[] { 0, 8, 8, 4 }
             };
 
-            Assert.IsTrue(IsBoardsEqual(expected, board));
+            Assert.IsTrue(IsBoardsEqual(expected, board), $"{board[0][1]} {board[1][1]} {board[2][1]} {board[3][1]}");
         }
 
         [TestMethod]
@@ -190,7 +190,7 @@ namespace UnitTestProject1
             new int[] { 32768, 2048, 128, 8 }
             };
 
-            Assert.IsTrue(IsBoardsEqual(expected, board));
+            Assert.IsTrue(IsBoardsEqual(expected, board), $"{board[3][3]}");
         }
 
         [TestMethod]

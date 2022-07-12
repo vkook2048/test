@@ -20,10 +20,31 @@ namespace _2048_
     /// </summary>
     public partial class MainWindow : Window
     {
+        void test()
+        {
+            var board = new int[][] {
+            new int[] { 0, 2, 4, 8 },
+            new int[] { 16, 32, 64, 128 },
+            new int[] { 256, 512, 1024, 2048 },
+            new int[] { 4096, 8192, 16384, 32768 }
+            };
+
+            board = Game2048.Rotate(board);
+
+            var expected = new int[][] {
+            new int[] { 4096, 256, 16, 0 },
+            new int[] { 8192, 512, 32, 2 },
+            new int[] { 16384, 1024, 64, 4 },
+            new int[] { 32768, 2048, 128, 8 }
+            };
+        }
+
         Button[] _buttons;
         public MainWindow()
         {
             InitializeComponent();
+
+            test();
             
             _buttons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16 };
             Clear();
