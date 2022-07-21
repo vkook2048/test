@@ -38,7 +38,8 @@ namespace Inter
             }
 
         }
-        public bool IsWin()
+        public bool IsWin(ref int index)
+        //public bool IsWin()
         {
             var winningCombinations = new int[8, 3] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 }, { 0, 4, 8 }, { 2, 4, 6 } };
 
@@ -49,6 +50,7 @@ namespace Inter
                 int index3 = winningCombinations[i, 2];
                 if (Field[index1] == Field[index2] && Field[index2] == Field[index3] && Field[index2] != "")
                 {
+                    index = i;
                     return true;
                 }
             }
@@ -84,7 +86,7 @@ namespace Inter
             else
             {
                 Field[index] = CurrentPlayer();
-                if (!IsWin() && !IsDraw())
+                if (!IsWin(ref index) && !IsDraw())
                 {
                     ChangePlayer();
                 }

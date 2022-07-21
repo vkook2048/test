@@ -53,7 +53,7 @@ namespace UnitTestProject1
             new int[] { 0, 0, 0, 0 }
             };
 
-            board = Game2048.MoveDown(board);
+            board = Game2048.PrivateMoveDown(board);
 
             var expected = new int[][] {
             new int[] { 0, 0, 0, 0 },
@@ -76,7 +76,7 @@ namespace UnitTestProject1
             new int[] { 0, 0, 0, 0 }
             };
 
-            board = Game2048.MoveDown(board);
+            board = Game2048.PrivateMoveDown(board);
 
             var expected = new int[][] {
             new int[] { 0, 0, 0, 0 },
@@ -98,7 +98,7 @@ namespace UnitTestProject1
             new int[] { 0, 8, 0, 0 }
             };
 
-            board = Game2048.MoveDown(board);
+            board = Game2048.PrivateMoveDown(board);
 
             var expected = new int[][] {
             new int[] { 0, 0, 0, 0 },
@@ -120,7 +120,7 @@ namespace UnitTestProject1
             new int[] { 0, 0, 4, 2 }
             };
 
-            board = Game2048.MoveDown(board);
+            board = Game2048.PrivateMoveDown(board);
 
             var expected = new int[][] {
             new int[] { 0, 0, 0, 0 },
@@ -142,7 +142,7 @@ namespace UnitTestProject1
             new int[] { 0, 0, 2, 4}
             };
 
-            board = Game2048.MoveDown(board);
+            board = Game2048.PrivateMoveDown(board);
 
             var expected = new int[][] {
             new int[] { 0, 0, 0, 0 },
@@ -164,7 +164,7 @@ namespace UnitTestProject1
             new int[] { 0, 4, 4, 4 }
             };
 
-            board = Game2048.MoveDown(board);
+            board = Game2048.PrivateMoveDown(board);
 
             var expected = new int[][] {
             new int[] { 0, 0, 0, 2 },
@@ -233,7 +233,7 @@ namespace UnitTestProject1
             new int[] { 0, 0, 0, 0 }
             };
 
-            board = Game2048.MoveRight(board);
+            board = Game2048.PrivateMoveRight(board);
 
             var expected = new int[][] {
             new int[] { 0, 0, 2, 4 },
@@ -255,7 +255,7 @@ namespace UnitTestProject1
             new int[] { 0, 0, 4, 2 }
             };
 
-            board = Game2048.MoveUp(board);
+            board = Game2048.PrivateMoveUp(board);
 
             var expected = new int[][] {
             new int[] { 0, 4, 8, 4 },
@@ -277,7 +277,7 @@ namespace UnitTestProject1
             new int[] { 4, 0, 4, 2 }
             };
 
-            board = Game2048.MoveLeft(board);
+            board = Game2048.PrivateMoveLeft(board);
 
             var expected = new int[][] {
             new int[] { 4, 0, 0, 0 },
@@ -299,7 +299,7 @@ namespace UnitTestProject1
             };
 
             board = Game2048.GenerateNewNumber(board);
-            board = Game2048.MoveRight(board);
+            board = Game2048.PrivateMoveRight(board);
 
             var expected = new int[][] {
             new int[] { 0, 4, 4, 2 },
@@ -320,12 +320,12 @@ namespace UnitTestProject1
             new int[] { 4, 2, 4, 2 }
             };
 
-            board = Game2048.MoveRight(board);
+            //board = Game2048.MoveRight(board);
             board = Game2048.GenerateNewNumber(board);
 
 
             var expected = new int[][] {
-            new int[] { 0, 2, 4, 2 },
+            new int[] { 2, 2, 4, 2 },
             new int[] { 4, 2, 4, 2 },
             new int[] { 2, 4, 2, 4 },
             new int[] { 4, 2, 4, 2 }
@@ -343,9 +343,9 @@ namespace UnitTestProject1
             new int[] { 4, 2, 4, 2 }
             };
 
-            bool isEnd = Game2048.IsEnd(board);
+            bool isEnd = Game2048.PrivateIsEnd(board);
 
-            Assert.IsTrue(isEnd, "тест специально сделан провальным");
+            Assert.IsTrue(!isEnd, "тест специально сделан провальным");
         }
         [TestMethod]
         public void T14_IsEnd2()
@@ -357,10 +357,9 @@ namespace UnitTestProject1
             new int[] { 0, 0, 0, 0 }
             };
 
-            bool isEnd = Game2048.IsEnd(board);
-            bool canAdd = Game2048.CanGenerateNew(board);
+            bool isEnd = Game2048.PrivateIsEnd(board);
 
-            Assert.IsTrue(isEnd, "тест специально сделан провальным");
+            Assert.IsTrue(!isEnd, "тест специально сделан провальным");
         }
         [TestMethod]
         public void T15_IsEnd3()
@@ -372,7 +371,7 @@ namespace UnitTestProject1
             new int[] { 4, 2, 4, 2 }
             };
 
-            bool isEnd = Game2048.IsEnd(board);
+            bool isEnd = Game2048.PrivateIsEnd(board);
 
             Assert.IsTrue(isEnd);
         }

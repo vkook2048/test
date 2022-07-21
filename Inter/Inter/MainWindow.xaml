@@ -5,17 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Inter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="579" Width="800">
+        Title="MainWindow" Height="520" Width="320">
+
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border x:Name="BB" Background="#ffffff">
+                <TextBlock x:Name="TB" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" FontWeight="Bold" Text="{TemplateBinding Content}"
+                           Visibility="Collapsed"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="TB" Property="Visibility" Value="Visible"/>
+                    <Setter TargetName="TB" Property="Foreground" Value="#888888" />
+                </Trigger>
+                <Trigger Property="IsEnabled"  Value="false">
+                    <Setter TargetName="TB" Property="Visibility" Value="Visible"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
     <Grid>
-        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="65,49,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button2" Content="" HorizontalAlignment="Left" Margin="191,49,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button5" Content="" HorizontalAlignment="Left" Margin="191,177,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button4" Content="" HorizontalAlignment="Left" Margin="65,177,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button6" Content="" HorizontalAlignment="Left" Margin="315,177,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button3" Content="" HorizontalAlignment="Left" Margin="315,49,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button8" Content="" HorizontalAlignment="Left" Margin="191,304,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button7" Content="" HorizontalAlignment="Left" Margin="65,304,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="button9" Content="" HorizontalAlignment="Left" Margin="315,304,0,0" VerticalAlignment="Top" Click="Button_Click" Height="107" Width="107" FontSize="36" RenderTransformOrigin="-2.956,0.541"/>
-        <Button x:Name="newgamebutton" Content="New Game" HorizontalAlignment="Left" Margin="487,121,0,0" VerticalAlignment="Top" Height="83" Width="254" Click="newgamebutton_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Margin="10" Background="#000000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" x:Name="button1" Template="{StaticResource btTemplate}"  Content="" Click="Button_Click" FontSize="36"/>
+                <Button Grid.Row="0" Grid.Column="2" x:Name="button2" Template="{StaticResource btTemplate}"  Content="" Click="Button_Click" FontSize="36"/>
+                <Button Grid.Row="0" Grid.Column="4" x:Name="button3" Template="{StaticResource btTemplate}"  Content="" Click="Button_Click" FontSize="36"/>
+                <Button Grid.Column="0" Grid.Row="2" x:Name="button4" Template="{StaticResource btTemplate}" Content="" Click="Button_Click" FontSize="36"/>
+                <Button Grid.Column="2" Grid.Row="2" x:Name="button5" Template="{StaticResource btTemplate}" Content="" Click="Button_Click" FontSize="36"/>
+                <Button Grid.Column="4" Grid.Row="2" x:Name="button6" Template="{StaticResource btTemplate}" Content="" Click="Button_Click" FontSize="36"/>
+                <Button Grid.Column="0" Grid.Row="4" x:Name="button7" Template="{StaticResource btTemplate}" Content="" Click="Button_Click" FontSize="36"/>
+                <Button Grid.Column="2" Grid.Row="4" x:Name="button8" Template="{StaticResource btTemplate}" Content="" Click="Button_Click" FontSize="36"/>
+                <Button Grid.Column="4" Grid.Row="4" x:Name="button9" Template="{StaticResource btTemplate}" Content="" Click="Button_Click" FontSize="36"/>
+            
+        </Grid>
+
+        <Canvas Grid.Row="1">
+            <Line x:Name="line1" X1="10" X2="310" Y1="55" Y2="55" StrokeThickness="10" Visibility="Collapsed" Stroke="red"></Line>
+            <Line x:Name="line2" X1="10" X2="310" Y1="155" Y2="155" StrokeThickness="10" Visibility="Collapsed" Stroke="red"></Line>
+            <Line x:Name="line3" X1="10" X2="310" Y1="250" Y2="250" StrokeThickness="10" Visibility="Collapsed" Stroke="red"></Line>
+            <Line x:Name="line4" X1="60" X2="60" Y1="10" Y2="295" StrokeThickness="10" Visibility="Collapsed" Stroke="red"></Line>
+            <Line x:Name="line5" X1="160" X2="160" Y1="10" Y2="295" StrokeThickness="10" Visibility="Collapsed" Stroke="red"></Line>
+            <Line x:Name="line6" X1="265" X2="265" Y1="10" Y2="295" StrokeThickness="10" Visibility="Collapsed" Stroke="red"></Line>
+            <Line x:Name="line7" X1="10" X2="310" Y1="10" Y2="293" StrokeThickness="10" Visibility="Collapsed" Stroke="red"></Line>
+            <Line x:Name="line8" X1="310" X2="10" Y1="10" Y2="293" StrokeThickness="10" Visibility="Collapsed" Stroke="red"></Line>
+        </Canvas>
+        
+        <TextBlock x:Name="TopText" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="48" Foreground="#555575">HELLO</TextBlock>
+        <Button Grid.Row="2" Height="50" Width="160"  x:Name="newgamebutton" Content="New Game" Click="newgamebutton_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="5" BorderBrush="#7777dd" BorderThickness="5" Background="#0000" x:Name="buttonBorder">
+                        <TextBlock Text="NEW GAME" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="buttonBorder" Property="Background" Value="#dddddd" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>

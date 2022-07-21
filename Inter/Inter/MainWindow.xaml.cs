@@ -17,13 +17,19 @@ namespace Inter
 {
     // xaml
 
+    // template для кнопок поля одинаковый
+
+    // Stack panel (orientation)
+    // Grid (column definition, row definition, grid.row)
+    // переопределение кнопки
+
     // TextBlock (font fontweight fontstyle fontsize heigth width, horizontal aligment, vertical aligment)
     // TexBox
     // Button 
     // Border (corner radius)
-    // Stack panel (orientation)
-    // Grid (column definition, row definition, grid.row)
     // scroll view
+
+    // фиксированный размер окна
 
     // подсвечивается последний ход
     // крестики нолики рисовать либо картинка либо графика
@@ -35,16 +41,21 @@ namespace Inter
 
 
 
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window, IView
     {
         Button[] Buttons;
+        Line[] Lines;
+        int index;
         public MainWindow()
         {
             InitializeComponent();
             Buttons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
+            Lines = new Line[] { line1, line2, line3, line4, line5, line6, line7, line8 };
             Loaded += OnWindowLoaded;
         }
 
@@ -64,13 +75,16 @@ namespace Inter
 
         public void EndGame(Game game)
         {
-            if (game.IsWin())
+            if (game.IsWin(ref index))
             {
-                MessageBox.Show($"Game over. Winner: {game.CurrentPlayer()}");
+                Lines[index].Visibility = Visibility.Visible;
+                TopText.Text = $"WINNER: {game.CurrentPlayer()}!";
+                //MessageBox.Show($"Game over. Winner: {game.CurrentPlayer()}");
             }
             else if (game.IsDraw())
             {
-                MessageBox.Show("Game ended in a draw");
+                TopText.Text = "DRAW";
+                //MessageBox.Show("Game ended in a draw");
             }
         }
         void StartNewGame()
@@ -84,29 +98,30 @@ namespace Inter
 
         public void UpdateView(Game game)
         {
-            bool isEnd = game.IsDraw() || game.IsWin();
+            bool isEnd = game.IsDraw() || game.IsWin(ref index);
 
-            TranslateField(game);
-            foreach (var item in Buttons)
+            for (int i = 0; i < Buttons.Length; i++)
             {
-                if (item.Content.ToString() == "X" || item.Content.ToString() == "O" || isEnd)
+                Buttons[i].Content = game.Field[i];
+
+                if (!isEnd && game.Field[i].Length == 0)
+                    Buttons[i].Content = game.CurrentPlayer();
+
+                if (game.Field[i] == "X" || game.Field[i] == "O" || isEnd)
                 {
-                    item.IsEnabled = false;
+                    Buttons[i].IsEnabled = false;
+                    
                 }
                 else
                 {
-                    item.IsEnabled = true;
+                    Buttons[i].IsEnabled = true;
+                    Lines[index].Visibility = Visibility.Collapsed;
+                    TopText.Text = "HELLO";
                 }
             }
             EndGame(game);
         }
-        public void TranslateField(Game game)
-        {
-            for (int i = 0; i < Buttons.Length; i++)
-            {
-                Buttons[i].Content = game.Field[i];
-            }
-        }
+
         
     }
 }

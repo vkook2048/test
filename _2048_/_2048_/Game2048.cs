@@ -4,17 +4,14 @@ using System.Text;
 
 namespace _2048_
 {
+
+
+
     public class Game2048
     {
-        /* public int[][] Board = new int[][] { 
-             new int[] { 0, 0, 0, 0 },
-             new int[] { 0, 0, 0, 0 },
-             new int[] { 0, 0, 0, 0 },
-             new int[] { 0, 0, 0, 0 }
-         };*/
-        static bool IsMoved = true;
+        #region Private Static
 
-        public static int[][] MoveDown(int[][] board)
+        public static int[][] PrivateMoveDown(int[][] board)
         {
             int[][] saver = new int[][] {
             new int[] { 0, 0, 0, 0 },
@@ -47,7 +44,6 @@ namespace _2048_
                 }
             }
             board = Move(board);
-            IsMoved = !IsBoardsEqual(saver, board);
             return board;
         }
         private static int[][] Move(int[][] board)
@@ -99,30 +95,52 @@ namespace _2048_
         }
 
 
-        public static int[][] MoveLeft(int[][] board)
+        public static int[][] PrivateMoveLeft(int[][] board)
         {
             board = Rotate(board);
             board = Rotate(board);
             board = Rotate(board);
-            board = MoveDown(board);
+            board = PrivateMoveDown(board);
             board = Rotate(board);
             return board;
         }
 
-        public static int[][] MoveUp(int[][] board)
+
+        public static bool CanMoveUp(int[][] board)
+        {
+            var moved = PrivateMoveUp(board);
+            return !IsBoardsEqual(board, moved);
+        }
+        public static bool CanMoveDown(int[][] board)
+        {
+            var moved = PrivateMoveDown(board);
+            return !IsBoardsEqual(board, moved);
+        }
+        public static bool CanMoveLeft(int[][] board)
+        {
+            var moved = PrivateMoveLeft(board);
+            return !IsBoardsEqual(board, moved);
+        }
+        public static bool CanMoveRight(int[][] board)
+        {
+            var moved = PrivateMoveRight(board);
+            return !IsBoardsEqual(board, moved);
+        }
+
+        public static int[][] PrivateMoveUp(int[][] board)
         {
             board = Rotate(board);
             board = Rotate(board);
-            board = MoveDown(board);
+            board = PrivateMoveDown(board);
             board = Rotate(board);
             board = Rotate(board);
             return board;
         }
 
-        public static int[][] MoveRight(int[][] board)
+        public static int[][] PrivateMoveRight(int[][] board)
         {
             board = Rotate(board);
-            board = MoveDown(board);
+            board = PrivateMoveDown(board);
             board = Rotate(board);
             board = Rotate(board);
             board = Rotate(board);
@@ -145,86 +163,126 @@ namespace _2048_
             return true;
         }
 
-        public static bool CanGenerateNew(int[][] board)
+
+        public static int[][] GenerateNewNumber(int[][] board)
         {
-            int count = 0;
+            List<string> Empty = new List<string>();
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
                     if (board[i][j] == 0)
                     {
-                        count++;
+                        Empty.Add(i.ToString() + j.ToString());
                     }
                 }
             }
-            if (IsMoved && count > 0 || count == 16)
+            if (Empty.Count == 0)
             {
-                return true;
+
             }
             else
-            {
-                return false;
-            }
-        }
-
-        public static int[][] GenerateNewNumber(int[][] board)
-        {
-            if (CanGenerateNew(board))
             {
                 Random rnd = new Random();
-                int first = rnd.Next(0, 3);
-                int second = rnd.Next(0, 3);
-                while (board[first][second] != 0)
-                {
-                    first = rnd.Next(0, 3);
-                    second = rnd.Next(0, 3);
-                }
+                int index = rnd.Next(0, Empty.Count);
                 int[] variants = new int[] { 2, 2, 2, 4, 2, 2 };
-                board[first][second] = variants[rnd.Next(0, variants.Length)];
+                int variant = rnd.Next(0, variants.Length);
+                string numberofcell = Empty[index];
+                board[int.Parse(numberofcell[0].ToString())][int.Parse(numberofcell[1].ToString())] = variants[variant];
             }
+
+            // Сначала зполучить пустые, потом выбирать из них
             return board;
         }
-        public static bool IsEnd(int[][] board)
+        public static bool PrivateIsEnd(int[][] board)
         {
-            int[][] tester = new int[][] {
-            new int[] { 0, 0, 0, 0 },
-            new int[] { 0, 0, 0, 0 },
-            new int[] { 0, 0, 0, 0 },
-            new int[] { 0, 0, 0, 0 }
-            };
-            int count = 0;
-
-            tester = MoveDown(board);
-            if (!IsMoved)
-                count++;
-            tester = MoveUp(board);
-            if (!IsMoved)
-                count++;
-            tester = MoveLeft(board);
-            if (!IsMoved)
-                count++;
-            tester = MoveRight(board);
-            if (!IsMoved)
-                count++;
-            if(!CanGenerateNew(board))
-                count++;
-
-            if (count == 5)
-            {
+            bool areEqual = IsBoardsEqual(board, GenerateNewNumber(board));
+            if (areEqual && !CanMoveDown(board) && !CanMoveUp(board) && !CanMoveLeft(board) && !CanMoveRight(board))
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
-        public static int[][] AfterTappingAndMoving(int[][] board)
+        /*public static int[][] AfterTappingAndMoving(int[][] board)
         {
             board = GenerateNewNumber(board);
             IsEnd(board);
             return board;
+        }*/
+
+        #endregion
+
+        public Game2048()
+        {
+            Board = GenerateNewNumber(Board);
+            Board = GenerateNewNumber(Board);
+        }
+
+        public int[][] Board = new int[][] 
+        {
+             new int[] { 0, 0, 0, 0 },
+             new int[] { 0, 0, 0, 0 },
+             new int[] { 0, 0, 0, 0 },
+             new int[] { 0, 0, 0, 0 }
+        };
+
+        private bool isEnd = false;
+
+        public void MoveUp()
+        {
+            if (CanMoveUp(Board))
+            {
+                Board = PrivateMoveUp(Board);
+                isEnd = PrivateIsEnd(Board);
+                if (!isEnd)
+                {
+                    Board = GenerateNewNumber(Board);
+                }
+            }
+        }
+
+        public void MoveDown()
+        {
+            if (CanMoveDown(Board))
+            {
+                Board = PrivateMoveDown(Board);
+                isEnd = PrivateIsEnd(Board);
+                if (!isEnd)
+                {
+                    Board = GenerateNewNumber(Board);
+                }
+            }
+        }
+
+        public void MoveLeft()
+        {
+            if (CanMoveLeft(Board))
+            {
+                Board = PrivateMoveLeft(Board);
+                isEnd = PrivateIsEnd(Board);
+                if (!isEnd)
+                {
+                    Board = GenerateNewNumber(Board);
+                }
+            }
+        }
+
+        public void MoveRight()
+        {
+            if (CanMoveRight(Board))
+            {
+                Board = PrivateMoveRight(Board);
+                isEnd = PrivateIsEnd(Board);
+                if (!isEnd)
+                {
+                    Board = GenerateNewNumber(Board);
+                }
+            }
+        }
+
+        public bool IsEnd()
+        {
+            return isEnd;
         }
 
     }
