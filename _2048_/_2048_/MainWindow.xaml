@@ -5,29 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2048_"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="800"  KeyDown="Window_KeyDown">
     <Grid>
-        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="131,92,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button2" Content="" HorizontalAlignment="Left" Margin="180,92,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button3" Content="" HorizontalAlignment="Left" Margin="229,92,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button4" Content="" HorizontalAlignment="Left" Margin="278,92,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button5" Content="" HorizontalAlignment="Left" Margin="131,141,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button6" Content="" HorizontalAlignment="Left" Margin="180,141,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button7" Content="" HorizontalAlignment="Left" Margin="229,141,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button8" Content="" HorizontalAlignment="Left" Margin="278,141,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button9" Content="" HorizontalAlignment="Left" Margin="131,190,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button10" Content="" HorizontalAlignment="Left" Margin="180,190,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button11" Content="" HorizontalAlignment="Left" Margin="229,190,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button12" Content="" HorizontalAlignment="Left" Margin="278,190,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button13" Content="" HorizontalAlignment="Left" Margin="131,239,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button14" Content="" HorizontalAlignment="Left" Margin="180,239,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button15" Content="" HorizontalAlignment="Left" Margin="229,239,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button16" Content="" HorizontalAlignment="Left" Margin="278,239,0,0" VerticalAlignment="Top" Height="44" Width="44"/>
-        <Button x:Name="button_up" Content="Up" HorizontalAlignment="Left" Margin="608,203,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_up_Click"/>
-        <Button x:Name="button_down" Content="Down" HorizontalAlignment="Left" Margin="608,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_down_Click"/>
-        <Button x:Name="button_left" Content="Left" HorizontalAlignment="Left" Margin="536,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_left_Click"/>
-        <Button x:Name="button_right" Content="Right" HorizontalAlignment="Left" Margin="683,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_right_Click"/>
-        <Button x:Name="button_new_game" Content="New Game" HorizontalAlignment="Left" Margin="515,70,0,0" VerticalAlignment="Top" Height="44" Width="163" Click="button_new_game_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="729*"/>
+        </Grid.ColumnDefinitions>
 
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="60,92,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button2" Content="" HorizontalAlignment="Left" Margin="109,92,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button3" Content="" HorizontalAlignment="Left" Margin="158,92,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button4" Content="" HorizontalAlignment="Left" Margin="207,92,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button5" Content="" HorizontalAlignment="Left" Margin="60,141,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button6" Content="" HorizontalAlignment="Left" Margin="109,141,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button7" Content="" HorizontalAlignment="Left" Margin="158,141,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button8" Content="" HorizontalAlignment="Left" Margin="207,141,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button9" Content="" HorizontalAlignment="Left" Margin="60,190,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button10" Content="" HorizontalAlignment="Left" Margin="109,190,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button11" Content="" HorizontalAlignment="Left" Margin="158,190,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button12" Content="" HorizontalAlignment="Left" Margin="207,190,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button13" Content="" HorizontalAlignment="Left" Margin="60,239,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button14" Content="" HorizontalAlignment="Left" Margin="109,239,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button15" Content="" HorizontalAlignment="Left" Margin="158,239,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button16" Content="" HorizontalAlignment="Left" Margin="207,239,0,0" VerticalAlignment="Top" Height="44" Width="44" Grid.Column="1"/>
+        <Button x:Name="button_up" Content="Up" HorizontalAlignment="Left" Margin="537,203,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_up_Click" Grid.Column="1"/>
+        <Button x:Name="button_down" Content="Down" HorizontalAlignment="Left" Margin="537,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_down_Click" Grid.Column="1"/>
+        <Button x:Name="button_left" Content="Left" HorizontalAlignment="Left" Margin="465,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_left_Click" Grid.Column="1"/>
+        <Button x:Name="button_right" Content="Right" HorizontalAlignment="Left" Margin="612,274,0,0" VerticalAlignment="Top" Height="53" Width="53" Click="button_right_Click" Grid.Column="1"/>
+        <Button x:Name="button_new_game" Content="New Game" HorizontalAlignment="Left" Margin="444,70,0,0" VerticalAlignment="Top" Height="44" Width="163" Click="button_new_game_Click" Grid.Column="1"/>
+
+        <Grid Margin="30,450,0,0" Grid.Column="1" Grid.ColumnSpan="2">
+            <Button VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20" Height="40" Width="150" FontSize="24" Command="{Binding StartNewGame}">New Game</Button>
+            <StackPanel Height="200" Width="200" VerticalAlignment="Bottom" Margin="10">
+                <StackPanel x:Name="first_line"  Orientation="Horizontal" >
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                </StackPanel>
+                <StackPanel x:Name="second_line"  Orientation="Horizontal" >
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                </StackPanel>
+                <StackPanel x:Name="third_line"  Orientation="Horizontal" >
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                </StackPanel>
+                <StackPanel x:Name="fourth_line"  Orientation="Horizontal" >
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                    <TextBlock TextAlignment="Center" FontSize ="30"  Text="2" Height="50" Width="50" Background="LightGray"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

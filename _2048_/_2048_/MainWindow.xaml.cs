@@ -44,10 +44,15 @@ namespace _2048_
         {
             InitializeComponent();
 
-            test();
+            //test();
             
             _buttons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16 };
             Clear();
+
+            var vmodel = new ViewModel();
+            vmodel.StartNewGame();
+            DataContext = vmodel;
+
         }
         Random rnd = new Random();
 
@@ -297,6 +302,48 @@ namespace _2048_
             button_right.IsEnabled = false;
             MessageBox.Show("Game Over");
         }
+
+        
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key== Key.Up)
+            {
+                var vmodel = DataContext as ViewModel;
+                if (vmodel != null)
+                {
+                    vmodel.UpCommand.Execute(null);
+                }
+
+                //MessageBox.Show("Up");
+            }
+            else if (e.Key == Key.Down)
+            {
+                var vmodel = DataContext as ViewModel;
+                if (vmodel != null)
+                {
+                    vmodel.DownCommand.Execute(null);
+                }
+            }
+            else if (e.Key == Key.Left)
+            {
+                var vmodel = DataContext as ViewModel;
+                if (vmodel != null)
+                {
+                    vmodel.LeftCommand.Execute(null);
+                }
+            }
+            else if (e.Key == Key.Right)
+            {
+                var vmodel = DataContext as ViewModel;
+                if (vmodel != null)
+                {
+                    vmodel.RightCommand.Execute(null);
+                }
+            }
+
+            
+        }
     }
-    // много раз сдвинуть раз сложить и еще раз сдвинуть
+
 }
