@@ -1,0 +1,65 @@
+﻿<Window x:Class="SQLiteForMovement.OperationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="OperationWindow" Height="300" Width="400" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="8" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="8" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="Margin" Value="8" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="ID" />
+        <TextBlock Text="Date" Grid.Row="1" />
+        <TextBlock Text="Shop" Grid.Row="2" />
+        <TextBlock Text="Product" Grid.Row="3" />
+        <TextBlock Text="Count" Grid.Row="4" />
+        <TextBlock Text="Operation" Grid.Row="5" />
+        <TextBlock Text="Price" Grid.Row="6" />
+
+        <TextBox Text="{Binding Id}" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox Text="{Binding Date}" Grid.Column="1" Grid.Row="1" />
+        <!--TextBox Text="{Binding Shop}" Grid.Column="1" Grid.Row="2" /-->
+        <ComboBox Grid.Column="1" Grid.Row="2" Width="314" Height="19.505" SelectedItem="{Binding Shop, Mode=TwoWay}"
+                  ItemsSource="{Binding Shops}" DisplayMemberPath="Id">
+        </ComboBox>
+        <!--TextBox Text="{Binding Product}" Grid.Column="1" Grid.Row="3" /-->
+        <ComboBox Grid.Column="1" Grid.Row="3" Width="314" Height="19.505" SelectedItem="{Binding Product, Mode=TwoWay}"
+                  ItemsSource="{Binding Products}" DisplayMemberPath="Name">
+        </ComboBox>
+        <TextBox Text="{Binding Count}" Grid.Column="1" Grid.Row="4" />
+        <ComboBox Grid.Column="1" Grid.Row="5" Width="314" Height="19.505" SelectedItem="{Binding Operation, Mode=TwoWay}"
+                  ItemsSource="{Binding Operations}">
+        </ComboBox>
+        <TextBox Text="{Binding Price}" Grid.Column="1" Grid.Row="6" />
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="7" Grid.Column="1">
+            <Button IsDefault="True" Click="Accept_Click" >OK</Button>
+            <Button IsCancel="True" >Отмена</Button>
+        </StackPanel>
+    </Grid>
+</Window>
+

@@ -1,0 +1,57 @@
+﻿<Window x:Class="SQLiteForMovement.ProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLiteForMovement"
+        mc:Ignorable="d"
+        Title="ProductWindow" Height="400" Width="950">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="330"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView x:Name="productsList" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="ID" Width="40" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Department}" Header="Department" Width="150" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="150" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Unit}" Header="Unit" Width="150" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Count}" Header="Count" Width="60" />
+                    <GridViewColumn DisplayMemberBinding="{Binding VendorId}" Header="VendorID" Width="60" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">
+            <TextBlock Text="ID" Margin="10" HorizontalAlignment="Center" />
+            <TextBlock Text="Department" HorizontalAlignment="Center" Margin="10"/>
+            <TextBlock Text="Name" HorizontalAlignment="Center" Margin="10" />
+            <TextBlock Text="Unit" HorizontalAlignment="Center" Margin="10" />
+            <TextBlock Text="Count" HorizontalAlignment="Center" Margin="10" />
+            <TextBlock Text="VendorID" HorizontalAlignment="Center" Margin="10" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Width="250">
+            <TextBox Text="{Binding SelectedItem.Id, ElementName=productsList}" Margin="10" IsReadOnly="True"  />
+            <TextBox Text="{Binding SelectedItem.Department, ElementName=productsList}" Margin="10"  />
+            <TextBox Text="{Binding SelectedItem.Name, ElementName=productsList}" Margin="10"   />
+            <TextBox Text="{Binding SelectedItem.Unit, ElementName=productsList}" Margin="10"   />
+            <TextBox Text="{Binding SelectedItem.Count, ElementName=productsList}" Margin="10"   />
+            <TextBox Text="{Binding SelectedItem.VendorId, ElementName=productsList}" Margin="10"   />
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+            <Button Content="Добавить" Margin="10" Click="Add_Click"  HorizontalAlignment="Center" />
+            <Button Content="Удалить" Margin="10" Click="Delete_Click" HorizontalAlignment="Center"  />
+            <Button Content="Сохранить" Margin="10" Click="Save_Click" HorizontalAlignment="Center"  />
+        </StackPanel>
+    </Grid>
+
+</Window>
