@@ -66,6 +66,7 @@ namespace SQLiteForMovement
             var editCopy = new Movement() { Context = db };
             movement.CopyTo(editCopy);
             OperationWindow operationWindow = new OperationWindow(editCopy);
+            operationWindow.Owner = this;
             if (operationWindow.ShowDialog() == true )
             {
                 // получаем измененный объект
@@ -92,6 +93,7 @@ namespace SQLiteForMovement
         private void Shops_Click(object sender, RoutedEventArgs e)
         {
             ShopWindow shopWindow = new ShopWindow(db);
+            shopWindow.Owner = this;
             if (shopWindow.ShowDialog() == true)
             {
 
@@ -101,6 +103,7 @@ namespace SQLiteForMovement
         private void Products_Click(object sender, RoutedEventArgs e)
         {
             ProductWindow productWindow = new ProductWindow(db);
+            productWindow.Owner = this;
             if (productWindow.ShowDialog() == true)
             {
 
