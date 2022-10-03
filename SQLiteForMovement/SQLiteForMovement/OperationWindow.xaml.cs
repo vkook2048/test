@@ -28,8 +28,6 @@ namespace SQLiteForMovement
 
         void Accept_Click(object sender, RoutedEventArgs e)
         {
-            // TODO проверка на null или пустое поле (можно много маленьких if)
-            // для строки string.Isnullorempty
             if (!string.IsNullOrEmpty(Movement.Date) && Movement.Shop != null && Movement.Product != null && !string.IsNullOrEmpty(Movement.Operation) && Movement.Count > 0 && Movement.Price > 0)
             {
                 DialogResult = true;

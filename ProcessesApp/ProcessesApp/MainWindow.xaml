@@ -5,32 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProcessesApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="750">
+        Title="MainWindow" Height="600" Width="805" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        
         <ListView x:Name="processesList" Grid.Row="0">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="End task" Click="Delete_Click" />
+                    <MenuItem Header="Open file location" Click="OpenFileLocation_Click" />
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="200">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Id" Click="processesListColumnHeader_Click">ID</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}"  Width="600">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="Name" Click="processesListColumnHeader_Click">Name</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
+                    <GridView.Columns>
+                        <GridViewColumn Width="30" >
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type FrameworkElement}">
+                                    <Setter Property="IsHitTestVisible" Value="False"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding ImageSource}" Width="16" Height="16" Stretch="Fill"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}"  Width="550">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="Name" Click="processesListColumnHeader_Click">Name</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="200">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="Id" Click="processesListColumnHeader_Click">ID</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock Text="{Binding SelectedItem.Path, ElementName=processesList}" Margin="10" HorizontalAlignment="Center" Width="700" Grid.Row="1"/>
+        
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left" Grid.Row="1">
+            <Image Source="{Binding SelectedItem.ImageSource, ElementName=processesList}"/>
+            <TextBlock Text="{Binding SelectedItem.Path, ElementName=processesList}" />
+        </StackPanel>
+        
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" >
-            <Button Content="Удалить" Margin="10" Click="Delete_Click" HorizontalAlignment="Center"/> 
+            <Button Content="Завершить" Margin="10" Click="Delete_Click" HorizontalAlignment="Center"/>
+            <Button Content="Обновить" Margin="10" Click="Update_Click" HorizontalAlignment="Center" Visibility="Collapsed"/>
+            <Button Content="Открыть папку" Margin="10" Click="OpenFileLocation_Click" HorizontalAlignment="Center" Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
 </Window>
