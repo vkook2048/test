@@ -26,6 +26,7 @@ namespace ProcessesApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
         private GridViewColumnHeader listViewSortCol = null;
         private SortAdorner listViewSortAdorner = null;
         ObservableCollection<MyProcess> allMyProcesses = new ObservableCollection<MyProcess>();
@@ -61,7 +62,7 @@ namespace ProcessesApp
         private MyProcess MakeMyProcess(Process process)
         {
             string path = "";
-            System.Drawing.Icon icon = null;
+            Icon icon = null;
             try
             {
                 if (process.MainModule != null)
@@ -92,7 +93,6 @@ namespace ProcessesApp
             ListSortDirection newDir = ListSortDirection.Ascending;
             if (listViewSortCol == column && listViewSortAdorner.Direction == newDir)
                 newDir = ListSortDirection.Descending;
-
             listViewSortCol = column;
             listViewSortAdorner = new SortAdorner(listViewSortCol, newDir);
             AdornerLayer.GetAdornerLayer(listViewSortCol).Add(listViewSortAdorner);
@@ -203,8 +203,5 @@ namespace ProcessesApp
                 Process.Start(new ProcessStartInfo("explorer.exe", " /select, " + proc.Path));
             }
         }
-        // dispatcher timer - update every second //
-        // TODO Context menu (End task; open file location) //
-        // open file location т е открыть папку с файлом //
     }
 }
