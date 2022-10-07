@@ -146,14 +146,14 @@ namespace ProcessesApp
 
         private void AddNew(Process[] localAll)
         {
-            var oldProcessList = new List<int>() { };
+            var oldProcessIdList = new List<int>() { };
             foreach (var item in allMyProcesses)
             {
-                oldProcessList.Add(item.Id);
+                oldProcessIdList.Add(item.Id);
             }
             foreach (var item in localAll)
             {
-                if (!oldProcessList.Contains(item.Id))
+                if (!oldProcessIdList.Contains(item.Id))
                 {
                     Process proc = Array.Find(localAll, x => x.Id == item.Id);
                     if (proc != null)

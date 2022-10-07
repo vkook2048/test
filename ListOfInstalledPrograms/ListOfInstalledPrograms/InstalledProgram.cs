@@ -36,10 +36,5 @@ namespace ListOfInstalledPrograms
             UninstallString = uninstallString;
             Key = key;
         }
-
-        static void Void()
-        {
-
-        }
     }
 }
