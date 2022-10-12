@@ -15,6 +15,8 @@ namespace FoldersApp
         public string Path { get; set; }
         public Icon Image { get; set; }
 
+        public MyFolder Parent { get; set; }
+
         public List<MyFolder> Folders { get; set; } = new List<MyFolder>();
         public DirectoryInfo Dir { get; set; }
 
@@ -45,7 +47,7 @@ namespace FoldersApp
             Name = dir.Name;
             Path = dir.FullName;
             Dir = dir;
-            Image = Icon.ExtractAssociatedIcon(@"C:\sql\FolderIcon.ico");
+            //Image = Icon.ExtractAssociatedIcon(@"C:\sql\FolderIcon.ico");
         }
 
         public MyFolder(DirectoryInfo dir, MyFolder parent)
@@ -53,8 +55,9 @@ namespace FoldersApp
             Name = dir.Name;
             Path = dir.FullName;
             parent.Folders.Add(this);
+            Parent = parent;
             Dir = dir;
-            Image = Icon.ExtractAssociatedIcon(@"C:\sql\FolderIcon.ico");
+            //Image = Icon.ExtractAssociatedIcon(@"C:\sql\FolderIcon.ico");
         }
 
         public override string ToString()
@@ -68,20 +71,45 @@ namespace FoldersApp
             {
                 List<MyFile> mfiles = new List<MyFile>();
 
-                var files = Dir.GetFiles();
-                if (files != null)
+                try
                 {
-                    foreach (var item in files)
+                    var files = Dir.GetFiles();
+                    var folders = Dir.GetDirectories();
+                    if (folders != null)
                     {
-                        MyFile file = new MyFile(item);
-                        file.Image = System.Drawing.Icon.ExtractAssociatedIcon(file.Path);
-                        mfiles.Add(file);
-                        //Trace.WriteLine($"{file.Name}");
+                        foreach (var item in folders)
+                        {
+                            MyFile file = new MyFile(item, true);
+                            mfiles.Add(file);
+                            //Trace.WriteLine($"{file.Name}");
+                        }
                     }
+                    if (files != null)
+                    {
+                        foreach (var item in files)
+                        {
+                            MyFile file = new MyFile(item, false);
+                            //file.Image = Icon.ExtractAssociatedIcon(file.Path);
+                            mfiles.Add(file);
+                            //Trace.WriteLine($"{file.Name}");
+                        }
+                    }
+                }
+                catch (Exception exc)
+                {
+
                 }
                 return mfiles;
             }
             set { }
+        }
+        public void GetDirectories(DirectoryInfo main, MyFolder parent)
+        {
+            DirectoryInfo[] Directories = main.GetDirectories();
+            foreach (var item in Directories)
+            {
+                MyFolder newFolder = new MyFolder(item, parent);               
+            }
         }
     }
 }

@@ -14,7 +14,9 @@ namespace FoldersApp
         public string Name { get; set; }
         public string Path { get; set; }
         public Icon Image { get; set; }
-        public long Size { get; set; }
+        //public long Size { get; set; }
+        public string Size { get; set; }
+        public bool IsFolder { get; set; }
 
         public BitmapSource ImageSource
         {
@@ -22,8 +24,21 @@ namespace FoldersApp
             {
                 try
                 {
+                    
+
                     if (Image == null)
-                        return null;
+                    {
+                        if (IsFolder)
+                        {
+                            Image = Icon.ExtractAssociatedIcon(@"c:\Users\Lexa\Desktop\SmartGit\test\FoldersApp\FoldersApp\ico\FolderIcon2.ico");
+                        }
+                        else
+                        {
+                            Image = Icon.ExtractAssociatedIcon(Path);
+                        }
+                        if (Image == null)
+                            return null;
+                    }
                     return Imaging.CreateBitmapSourceFromHIcon(Image.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                 }
                 catch
@@ -38,11 +53,42 @@ namespace FoldersApp
             }
         }
 
-        public MyFile(FileInfo file)
+        public MyFile(FileInfo file, bool isFolder)
         {
-            Name = file.Name;
-            Path = file.FullName;
-            Size = file.Length;
+            IsFolder = isFolder;
+            if (!IsFolder)
+            {
+                Name = file.Name;
+                Path = file.FullName;
+                Size = file.Length.ToString();
+            }
+        }
+
+        public MyFile(DirectoryInfo dir, bool isFolder)
+        {
+            IsFolder = isFolder;
+            if (IsFolder)
+            {                
+                Name = dir.Name;
+                Path = dir.FullName;
+                //Image = Icon.ExtractAssociatedIcon(@"C:\sql\FolderIcon.ico");
+            }           
+        }
+
+        public MyFolder ToFolder(MyFolder parent)
+        {
+            if (IsFolder)
+            {
+                foreach (var item in parent.Folders)
+                {
+                    if (item.Name == Name)
+                    {
+                        return item;
+                    }
+                }
+            }
+            return null;
+            
         }
     }
 }
