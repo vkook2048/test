@@ -33,6 +33,11 @@
             </TreeView.ItemTemplate>
         </TreeView>
         <ListView x:Name="fileList" Grid.Column="1" ItemsSource="{Binding SelectedItem.Files, ElementName=treeView}">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Свойства" Click="OpenSizeCounter_Click" />
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick" />

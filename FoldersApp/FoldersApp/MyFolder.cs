@@ -79,19 +79,17 @@ namespace FoldersApp
                     {
                         foreach (var item in folders)
                         {
-                            MyFile file = new MyFile(item, true);
+                            MyFile file = new MyFile(item, true, this);
                             mfiles.Add(file);
-                            //Trace.WriteLine($"{file.Name}");
                         }
                     }
                     if (files != null)
                     {
                         foreach (var item in files)
                         {
-                            MyFile file = new MyFile(item, false);
+                            MyFile file = new MyFile(item, false, this);
                             //file.Image = Icon.ExtractAssociatedIcon(file.Path);
                             mfiles.Add(file);
-                            //Trace.WriteLine($"{file.Name}");
                         }
                     }
                 }
@@ -111,5 +109,7 @@ namespace FoldersApp
                 MyFolder newFolder = new MyFolder(item, parent);               
             }
         }
+
+        
     }
 }

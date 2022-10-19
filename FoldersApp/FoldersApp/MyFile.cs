@@ -14,8 +14,9 @@ namespace FoldersApp
         public string Name { get; set; }
         public string Path { get; set; }
         public Icon Image { get; set; }
-        //public long Size { get; set; }
-        public string Size { get; set; }
+        public long Size { get; set; }
+        public MyFolder Parent { get; set; }
+        //public string Size { get; set; }
         public bool IsFolder { get; set; }
 
         public BitmapSource ImageSource
@@ -53,24 +54,26 @@ namespace FoldersApp
             }
         }
 
-        public MyFile(FileInfo file, bool isFolder)
+        public MyFile(FileInfo file, bool isFolder, MyFolder parent)
         {
             IsFolder = isFolder;
             if (!IsFolder)
             {
                 Name = file.Name;
                 Path = file.FullName;
-                Size = file.Length.ToString();
+                Size = file.Length;
+                Parent = parent;
             }
         }
 
-        public MyFile(DirectoryInfo dir, bool isFolder)
+        public MyFile(DirectoryInfo dir, bool isFolder, MyFolder parent)
         {
             IsFolder = isFolder;
             if (IsFolder)
             {                
                 Name = dir.Name;
                 Path = dir.FullName;
+                Parent = parent;
                 //Image = Icon.ExtractAssociatedIcon(@"C:\sql\FolderIcon.ico");
             }           
         }

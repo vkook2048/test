@@ -60,36 +60,14 @@ namespace FoldersApp
             
         }
 
-        /*public void GetAllDirectories(string header, DirectoryInfo main, MyFolder parent)
-        {
-            DirectoryInfo di = new DirectoryInfo(main.FullName);
-            //Trace.WriteLine(header + $"{di.Name}");
-            MyFolder folder = new MyFolder(di, parent);
-            try
-            {
-                DirectoryInfo[] AllDirectories = di.GetDirectories();
-                foreach (var item in AllDirectories)
-                {
-                     GetAllDirectories(header + "  ", item, folder);
-                    //Trace.WriteLine($"{item.Name}: " + subDirectories.Length);
-                   
-                }
-            }
-            catch
-            {
-                
-            }
-        }*/
-
-
         private void Folder_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-           //GetFiles(treeView.SelectedItem as MyFolder);
+            //GetFiles(treeView.SelectedItem as MyFolder);
         }
 
         private void ListColumnHeader_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("sth");
+            //MessageBox.Show("sth");
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -101,6 +79,7 @@ namespace FoldersApp
                 if (item.Name == nextFolder.Name)
                 {
                     SelectFolder(item);
+                    //Trace.WriteLine($"{item.Name}: {CountFolderSize(item)}");
                 }
             }
         }
@@ -148,9 +127,31 @@ namespace FoldersApp
                     GetTwoLevels(folder);
                 }
             }
+        }
 
-            //MyFolder currentFolder = treeView.SelectedItem as MyFolder;
-            //GetTwoLevels(currentFolder);
+        private void OpenSizeCounter_Click(object sender, RoutedEventArgs e)
+        {
+            var file = fileList.SelectedItem as MyFile;
+            if (file.IsFolder)
+            {
+                SizeCountingWindow SizeWindow = new SizeCountingWindow(FileToFolder(file, file.Parent));
+                if (SizeWindow.ShowDialog() == true)
+                {
+
+                }
+            }
+        }
+        public MyFolder FileToFolder(MyFile file, MyFolder parent)
+        {
+            MyFolder folder = null;
+            foreach (var item in parent.Folders)
+            {
+                if (item.Name == file.Name)
+                {
+                    folder = item;
+                }
+            }
+            return folder;
         }
     }
 }
