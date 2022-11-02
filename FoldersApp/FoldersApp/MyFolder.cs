@@ -47,7 +47,6 @@ namespace FoldersApp
             Name = dir.Name;
             Path = dir.FullName;
             Dir = dir;
-            //Image = Icon.ExtractAssociatedIcon(@"C:\sql\FolderIcon.ico");
         }
 
         public MyFolder(DirectoryInfo dir, MyFolder parent)
@@ -88,7 +87,6 @@ namespace FoldersApp
                         foreach (var item in files)
                         {
                             MyFile file = new MyFile(item, false, this);
-                            //file.Image = Icon.ExtractAssociatedIcon(file.Path);
                             mfiles.Add(file);
                         }
                     }

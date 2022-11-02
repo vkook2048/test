@@ -16,7 +16,6 @@ namespace FoldersApp
         public Icon Image { get; set; }
         public long Size { get; set; }
         public MyFolder Parent { get; set; }
-        //public string Size { get; set; }
         public bool IsFolder { get; set; }
 
         public BitmapSource ImageSource
@@ -24,9 +23,7 @@ namespace FoldersApp
             get
             {
                 try
-                {
-                    
-
+                {  
                     if (Image == null)
                     {
                         if (IsFolder)
@@ -45,8 +42,7 @@ namespace FoldersApp
                 catch
                 {
                     return null;
-                }
-                
+                }    
             }
             set
             {
@@ -74,7 +70,6 @@ namespace FoldersApp
                 Name = dir.Name;
                 Path = dir.FullName;
                 Parent = parent;
-                //Image = Icon.ExtractAssociatedIcon(@"C:\sql\FolderIcon.ico");
             }           
         }
 

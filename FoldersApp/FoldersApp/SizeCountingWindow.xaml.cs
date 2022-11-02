@@ -71,7 +71,6 @@ namespace FoldersApp
                     {
                         allFiles.Add(file);
                         Size += file.Length;
-                        //Trace.WriteLine($"{file.Name}: {file.Length}");
                     }
                     var otherDir = item.GetDirectories();
                     if (otherDir.Length > 0)
@@ -98,7 +97,6 @@ namespace FoldersApp
                 {
                     allFiles.Add(file);
                     Size += file.Length;
-                    //Trace.WriteLine($"{file.Name}: {file.Length}");
                 }
             }
             catch
@@ -107,29 +105,10 @@ namespace FoldersApp
             }
         }
 
-        //private void CountFolderSize(MyFolder mainFolder)
         private void CountFolderSize(string path)
-        {// через директории и файлинфо 
-            // передавать строку(путь)
+        {
             DirectoryInfo directory = new DirectoryInfo(path);
-            //DirectoryInfo[] otherDir = directory.GetDirectories();
             GetList(directory);
-            foreach (var item in allFiles)
-            {
-                /*if (item.IsFolder)
-                {
-                    MyFolder folder = FileToFolder(item, mainFolder);
-                    if (folder != null)
-                    {
-                        CountFolderSize(folder);
-                    }
-                }
-                else
-                {
-                    Size += item.Size;
-                }*/
-                //Size += item.Length;
-            }
         }
 
 

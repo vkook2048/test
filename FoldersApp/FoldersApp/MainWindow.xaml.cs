@@ -37,7 +37,6 @@ namespace FoldersApp
             MyFolder root = new MyFolder(Main);
             GetTwoLevels(root);
             collection.Add(root);
-            //GetAllDirectories("", Main, root);
         }
 
         public void GetTwoLevels(MyFolder root)
@@ -62,12 +61,6 @@ namespace FoldersApp
 
         private void Folder_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //GetFiles(treeView.SelectedItem as MyFolder);
-        }
-
-        private void ListColumnHeader_Click(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show("sth");
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -79,7 +72,6 @@ namespace FoldersApp
                 if (item.Name == nextFolder.Name)
                 {
                     SelectFolder(item);
-                    //Trace.WriteLine($"{item.Name}: {CountFolderSize(item)}");
                 }
             }
         }
