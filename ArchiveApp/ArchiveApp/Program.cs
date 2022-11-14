@@ -24,9 +24,6 @@ namespace ArchiveApp
             string command = args[0];
             string inputFile = args[1];
             string outputFile = args[2];
-            /*string command = "/to_hex";
-            string inputFile = @"c:\Users\Lexa\Desktop\SmartGit\test\ArchiveApp\ArchiveApp\bin\Debug\TFKGEOM.dll";
-            string outputFile = @"c:\Users\Lexa\Desktop\SmartGit\test\ArchiveApp\ArchiveApp\bin\Debug\TFKGEOMh.dat";*/
 
             if (command == "/pack")
             {

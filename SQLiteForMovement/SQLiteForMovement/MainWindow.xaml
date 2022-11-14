@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-         Title="MainWindow" Height="440" Width="850" ResizeMode="NoResize">
+         Title="MainWindow" Height="440" Width="880" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition  Height="20"/>
@@ -38,7 +38,10 @@
                 <MenuItem Header="Shops" Click="Shops_Click"/>
                 <MenuItem Header="Products" Click="Products_Click"/>
             </MenuItem>
-            
+            <MenuItem Header="Data">
+                <MenuItem Header="Export" Click="Export_Click"/>
+                <MenuItem Header="Import" Click="Import_Click"/>
+            </MenuItem>
         </Menu>
     </Grid>
 </Window>
