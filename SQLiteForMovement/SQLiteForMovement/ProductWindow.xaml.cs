@@ -41,7 +41,7 @@ namespace SQLiteForMovement
             ProductsCopy = new ObservableCollection<Product>();
             foreach (var product in ApplicationContext.Products)
             {
-                ProductsCopy.Add(product.Clone());
+                ProductsCopy.Add(product.CloneProduct());
             }
             DataContext = ProductsCopy;
         }

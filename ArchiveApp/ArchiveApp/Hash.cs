@@ -42,7 +42,7 @@ namespace ArchiveApp
             int numb = (int)crc;
             byte[] intBytes = BitConverter.GetBytes(numb);
             Array.Reverse(intBytes);
-            return Hex.ToHexString(intBytes);
+            return Hex.GetInstance().ToHexString(intBytes);
         }
 
         public string CountMD5()
@@ -66,7 +66,7 @@ namespace ArchiveApp
             using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] hashValue = sha256.ComputeHash(Bytes);
-                hash = Hex.ToHexString(hashValue);
+                hash = Hex.GetInstance().ToHexString(hashValue);
             }
             return hash;
         }

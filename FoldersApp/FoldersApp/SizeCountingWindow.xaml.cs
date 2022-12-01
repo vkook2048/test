@@ -56,6 +56,32 @@ namespace FoldersApp
             DialogResult = true;
         }
 
+        private void EnumerateFiles(DirectoryInfo main, IFileVisitor visitor)
+        {
+            try
+            {
+                var files = main.GetFiles();
+                foreach (var file in files)
+                {
+                    visitor.Visit(file);
+                }
+                var otherDir = main.GetDirectories();
+                if (otherDir.Length > 0)
+                {
+                    foreach (var dir in otherDir)
+                    {
+                        EnumerateFiles(dir, visitor);
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
         private void GetList(DirectoryInfo main)
         {
             AddFiles(main);
@@ -108,9 +134,69 @@ namespace FoldersApp
         private void CountFolderSize(string path)
         {
             DirectoryInfo directory = new DirectoryInfo(path);
-            GetList(directory);
+            //GetList(directory);
+            var fileSizeCounter = new FileSizeCounter();
+            fileSizeCounter.window = this;
+            EnumerateFiles(directory, fileSizeCounter);
+            //Size = fileSizeCounter.Size;
         }
 
+        private List<string> FindFiles(string path, string extension)
+        {
+            DirectoryInfo directory = new DirectoryInfo(path);
+            //GetList(directory);
+            var fileFinder = new FileFinder(extension);
+            //fileFinder.window = this;
+            EnumerateFiles(directory, fileFinder);
+            //Size = fileSizeCounter.Size;
+            return fileFinder.filesnames;
+        }
 
+        private void FindButton_Click(object sender, RoutedEventArgs e)
+        {
+            var filesnames = FindFiles(Folder.Path, ".txt");
+            string str = "";
+            foreach (var name in filesnames)
+            {
+                str += name + Environment.NewLine;
+            }
+            MessageBox.Show(str);
+        }
+    }
+
+    public interface IFileVisitor
+    {
+        void Visit(FileInfo File);
+    }
+
+    public class FileSizeCounter : IFileVisitor
+    {
+        public SizeCountingWindow window;
+        //public long Size;
+        public void Visit(FileInfo File)
+        {
+            window.Size += File.Length;
+            //Size += File.Length;
+        }
+    }
+
+    public class FileFinder : IFileVisitor
+    {
+        public List<string> filesnames = new List<string>();
+       // public SizeCountingWindow window;
+        public string extension;
+        public FileFinder(string Extension)
+        {
+            extension = Extension;
+        }
+        //public long Size;
+        public void Visit(FileInfo File)
+        {
+            if (File.Name.Contains(extension))
+            {
+                filesnames.Add(File.Name);
+            }
+            
+        }
     }
 }

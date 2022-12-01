@@ -8,7 +8,22 @@ namespace ArchiveApp
 {  
     class Hex
     {
-        public static string ToHexString(byte[] Bytes)
+        private Hex()
+        {
+
+        }
+        private static Hex _instance;
+
+        public static Hex GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new Hex();
+            }
+            return _instance;
+        }
+
+        public  string ToHexString(byte[] Bytes)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var item in Bytes)
@@ -18,7 +33,7 @@ namespace ArchiveApp
             return sb.ToString();
         }
 
-        public static byte[] FromHexString(string InputString)
+        public  byte[] FromHexString(string InputString)
         {
             string[] numbers = new string[InputString.Length / 2];
             int count = 0;
@@ -37,7 +52,7 @@ namespace ArchiveApp
             return output;
         }
 
-        private static string ToHexademical(byte item)
+        private  string ToHexademical(byte item)
         {
             int number = Convert.ToInt32(item);
             string result = "";
@@ -49,7 +64,7 @@ namespace ArchiveApp
 
             return result;
         }
-        private static string NumbToLetter(int numb)
+        private  string NumbToLetter(int numb)
         {
             if (numb == 10)
             {
@@ -80,7 +95,7 @@ namespace ArchiveApp
                 return numb.ToString();
             }
         }
-        private static byte FromHexademical(string str)
+        private  byte FromHexademical(string str)
         {
             int numb = 0;
             int help = 16;
@@ -91,7 +106,7 @@ namespace ArchiveApp
             }
             return Convert.ToByte(numb);
         }
-        private static int ToInt(char charr)
+        private  int ToInt(char charr)
         {
             if (charr == 'a')
             {

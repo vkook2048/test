@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SQLiteForMovement
 {
-    public class Product
+    public class Product: ICloneable
     {
         public Product()
         {
@@ -16,7 +16,17 @@ namespace SQLiteForMovement
             product.CopyTo(this);
         }
 
-        public Product Clone()
+        public object Clone()
+        {
+            return new Product(this);
+            /*Product other = (Product)this.MemberwiseClone();
+            other.Department = string.Copy(Department);
+            other.Name = string.Copy(Name);
+            other.Unit = string.Copy(Unit);
+            return other;*/
+        }
+
+        public Product CloneProduct()
         {
             return new Product(this);
         }

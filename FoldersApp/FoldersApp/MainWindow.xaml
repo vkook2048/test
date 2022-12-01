@@ -31,7 +31,7 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <ListView x:Name="fileList" Grid.Column="1" ItemsSource="{Binding SelectedItem.Files, ElementName=treeView}">
+        <ListView x:Name="fileList" Grid.Column="1" ItemsSource="{Binding SelectedItem.Files, ElementName=treeView}" MouseDoubleClick="fileList_MouseDoubleClick">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Свойства" Click="OpenSizeCounter_Click" />
@@ -52,7 +52,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}"  Width="350">
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}"   Width="350">
                             <GridViewColumn.Header>
                                 <GridViewColumnHeader Tag="Name" Click="ListColumnHeader_Click">Name</GridViewColumnHeader>
                             </GridViewColumn.Header>

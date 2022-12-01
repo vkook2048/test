@@ -145,5 +145,23 @@ namespace FoldersApp
             }
             return folder;
         }
+
+        private void ListColumnHeader_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void fileList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MyFolder currentFolder = treeView.SelectedItem as MyFolder;
+            var nextFolder = fileList.SelectedItem as MyFile;
+            foreach (var item in new List<MyFolder>(currentFolder.Folders))
+            {
+                if (item.Name == nextFolder.Name)
+                {
+                    SelectFolder(item);
+                }
+            }
+        }
     }
 }

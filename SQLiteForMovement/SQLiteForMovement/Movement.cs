@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SQLiteForMovement
 {
-    public class Movement
+    public class Movement: ICloneable
     {
         [NotMapped]
         public ApplicationContext Context { get; set; }
@@ -33,7 +33,15 @@ namespace SQLiteForMovement
         public string Operation { get; set; }
         public double Price { get; set; }
 
-
+        public object Clone()
+        {
+            Movement other = (Movement)this.MemberwiseClone();
+            other.Shop = new Shop(Shop);
+            other.Product = new Product(Product);
+            other.Date = String.Copy(Date);
+            other.Operation = String.Copy(Operation);
+            return other;
+        }
 
         public void CopyTo(Movement movement)
         {

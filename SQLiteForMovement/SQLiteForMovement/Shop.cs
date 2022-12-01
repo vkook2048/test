@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SQLiteForMovement
 {
-    public class Shop
+    public class Shop: ICloneable
     {
         public Shop()
         {
@@ -15,7 +15,7 @@ namespace SQLiteForMovement
             shop.CopyTo(this);
         }
 
-        public Shop Clone()
+        public Shop CloneShop()
         {
             return new Shop(this);
         }
@@ -29,6 +29,14 @@ namespace SQLiteForMovement
             shop.Id = this.Id;
             shop.Address = this.Address;
             shop.AreaId = this.AreaId;
+        }
+
+        public object Clone()
+        {
+            return new Shop(this);
+            /*Shop other = (Shop)this.MemberwiseClone();
+            other.Address = string.Copy(Address);
+            return other;*/
         }
     }
 }

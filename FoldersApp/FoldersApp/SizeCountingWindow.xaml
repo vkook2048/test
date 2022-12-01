@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FoldersApp"
         mc:Ignorable="d"
-        Title="SizeCountingWindow" Height="250" Width="400" ResizeMode="NoResize">
+        Title="SizeCountingWindow" Height="300" Width="400" ResizeMode="NoResize">
     <Grid>
         <TextBlock x:Name="txt" Text=" " Margin="50 40 50 130" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" FontSize="14"/>
-        <StackPanel Margin="20 140 20 10" Height="80" Width="100">
+        <StackPanel Margin="20 130 20 10" Height="100" Width="100">
             <Button Content="Count" Margin="5" Visibility="Hidden"/>
             <Button Content="OK" Click="OKButton_Click" Margin="5"/>
+            <Button Content="Find" Margin="5" Click="FindButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>

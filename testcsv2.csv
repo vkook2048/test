@@ -1,0 +1,5 @@
+Id,Date,ShopId,ProductId,Count,Operation,Price
+1,zdb,M2,2,6,Поступление,9.0
+2,fgffg,M1,3,6,Поступление,7.0
+3,asf,M4,1,4,Поступление,2.0
+4,fmxg,M5,2,4,Продажа,5.0

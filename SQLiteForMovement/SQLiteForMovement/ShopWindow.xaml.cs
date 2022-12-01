@@ -42,7 +42,7 @@ namespace SQLiteForMovement
             ShopsCopy = new ObservableCollection<Shop>();
             foreach(var shop in ApplicationContext.Shops)
             {
-                ShopsCopy.Add(shop.Clone());
+                ShopsCopy.Add(shop.CloneShop());
             }
             DataContext = ShopsCopy;
         }

@@ -53,12 +53,12 @@ namespace ArchiveApp
             if (command == "/to_hex")
             {
                 byte[] bytes = File.ReadAllBytes(inputFile);
-                File.WriteAllText(outputFile, Hex.ToHexString(bytes));
+                File.WriteAllText(outputFile, Hex.GetInstance().ToHexString(bytes));
             }
             if (command == "/from_hex")
             {
                string inputString = File.ReadAllText(inputFile);
-               File.WriteAllBytes(outputFile, Hex.FromHexString(inputString));
+               File.WriteAllBytes(outputFile, Hex.GetInstance().FromHexString(inputString));
             }
             if (command == "/to_base64")
             {
