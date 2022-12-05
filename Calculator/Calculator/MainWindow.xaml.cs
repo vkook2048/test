@@ -38,7 +38,7 @@ namespace Calculator
             catch (Exception exc)
             {
                 textblock1.Text = "ERR";
-                error1.Text = exc.ToString();
+                error1.Text = exc.Message;
             }
         }
 

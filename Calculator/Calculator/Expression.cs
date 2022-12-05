@@ -38,7 +38,19 @@ namespace Calculator
                             endindx = i;
                             break;
                         }
+                        if (indx < 0)
+                        {
+                            throw new Exception("Скобки расставлены неправильно");
+                        }
                     }
+                }
+                if (indx > 0)
+                {
+                    throw new Exception("Количество открытых скобок превышает количество закрытых");
+                }
+                else if (indx < 0)
+                {
+                    throw new Exception("Количество закрытых скобок превышает количество открытых");
                 }
 
                 string strIndex = "exp" + (context.dict.Count + 1);
@@ -91,16 +103,37 @@ namespace Calculator
                 return exp;
             }
 
+            if (strexp.IndexOf("^") >= 0)
+            {
+                var strs = strexp.Split('^');
+                Expression exp = new PowerExpression();
+                int signIndex = -1;
+                for (int i = 0; i < strs.Length; i++)
+                {
+                    var child = Expression.Parse(strs[i], context);
+                    if (signIndex >= 0)
+                        child.Sign = strexp[signIndex];
+                    exp.Expressions.Add(child);
+                    signIndex += strs[i].Length + 1;
+                }
+                return exp;
+            }
+
             if (context.dict.ContainsKey(strexp))
                 return context.dict[strexp];
+            if (strexp.Length == 0)
+            {
+                throw new Exception("Пустое значение после/перед знаком");
+            }
+
             double d = 0;
             if (!double.TryParse(strexp, out d))
             {
-                throw new Exception();
+                throw new Exception("Введены непонятные данные: " + strexp);
             }
             else
             {
-                return new NumberExpression() { value = double.Parse(strexp) };
+                return new NumberExpression() { value = d };
             }
         }
 
@@ -155,6 +188,26 @@ namespace Calculator
                 }
             }
             return mult;
+        }
+    }
+
+    public class PowerExpression : Expression
+    {
+        public override double Calculate()
+        {
+            double pow = 1;
+            foreach (var item in Expressions)
+            {
+                if (item.Sign == '^')
+                {
+                    pow = Math.Pow(pow, item.Calculate());
+                }
+                else
+                {
+                    pow *= item.Calculate();
+                }
+            }
+            return pow;
         }
     }
 

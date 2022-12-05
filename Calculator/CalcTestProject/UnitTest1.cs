@@ -7,7 +7,7 @@ namespace CalcTestProject
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod01()
         {
             var exp = Expression.Parse("14,5");
             double val = exp.Calculate();
@@ -15,7 +15,7 @@ namespace CalcTestProject
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void TestMethod02()
         {
             var exp = Expression.Parse("2 + 3");
             double val = exp.Calculate();
@@ -23,7 +23,7 @@ namespace CalcTestProject
         }
 
         [TestMethod]
-        public void TestMethod3()
+        public void TestMethod03()
         {
             var exp = Expression.Parse("3 - 2");
             double val = exp.Calculate();
@@ -31,7 +31,7 @@ namespace CalcTestProject
         }
 
         [TestMethod]
-        public void TestMethod4()
+        public void TestMethod04()
         {
             var exp = Expression.Parse("3 - 2 + 5");
             double val = exp.Calculate();
@@ -39,7 +39,7 @@ namespace CalcTestProject
         }
         
         [TestMethod]
-        public void TestMethod5()
+        public void TestMethod05()
         {
             var exp = Expression.Parse("-2 + 3");
             double val = exp.Calculate();
@@ -47,7 +47,7 @@ namespace CalcTestProject
         }
 
         [TestMethod]
-        public void TestMethod6()
+        public void TestMethod06()
         {
             var exp = Expression.Parse("2 * 3");
             double val = exp.Calculate();
@@ -55,7 +55,7 @@ namespace CalcTestProject
         }
 
         [TestMethod]
-        public void TestMethod7()
+        public void TestMethod07()
         {
             var exp = Expression.Parse("2 + 2 * 2");
             double val = exp.Calculate();
@@ -63,7 +63,7 @@ namespace CalcTestProject
         }
 
         [TestMethod]
-        public void TestMethod8()
+        public void TestMethod08()
         {
             var exp = Expression.Parse("2 * 3 - 2 * 2 / 4  + 2 * 1,5 * 6");
             double val = exp.Calculate();
@@ -71,7 +71,7 @@ namespace CalcTestProject
         }
 
         [TestMethod]
-        public void TestMethod9()
+        public void TestMethod09()
         {
             var exp = Expression.Parse("(2 + 2) * 2");
             double val = exp.Calculate();
@@ -116,6 +116,62 @@ namespace CalcTestProject
             var exp = Expression.Parse("(-1)*((2)) + 1");
             double val = exp.Calculate();
             Assert.AreEqual(-1, val);
+        }
+
+        [TestMethod]
+        public void TestMethod15()
+        {
+            var exp = Expression.Parse("2 ^ 3");
+            double val = exp.Calculate();
+            Assert.AreEqual(8, val);
+        }
+
+        [TestMethod]
+        public void TestMethod16()
+        {
+            var exp = Expression.Parse("2 ^ 3 + 2 ^ 2 - 3 ^ 2");
+            double val = exp.Calculate();
+            Assert.AreEqual(3, val);
+        }
+
+        [TestMethod]
+        public void TestMethod17()
+        {
+            var exp = Expression.Parse("(2 ^ 2 - 3 ^ 0) * 2 ^ 4");
+            double val = exp.Calculate();
+            Assert.AreEqual(48, val);
+        }
+
+        [TestMethod]
+        public void TestMethod18()
+        {
+            var exp = Expression.Parse("(2 + 2) ^ 2");
+            double val = exp.Calculate();
+            Assert.AreEqual(16, val);
+        }
+
+        [TestMethod]
+        public void TestMethod19()
+        {
+            var exp = Expression.Parse("((2 ^ 2 - 3 ^ 0) * 2) ^ 2");
+            double val = exp.Calculate();
+            Assert.AreEqual(36, val);
+        }
+
+        [TestMethod]
+        public void TestMethod20()
+        {
+            var exp = Expression.Parse("(3 + 2) ^ 2 / (7 - 2) ^ (0 + 1) + 3");
+            double val = exp.Calculate();
+            Assert.AreEqual(8, val);
+        }
+
+        [TestMethod]
+        public void TestMethod21()
+        {
+            var exp = Expression.Parse("((3 + 2) ^ 2 / (7 - 2) ^ (0 + 1) + 3) ^ 3 / 4");
+            double val = exp.Calculate();
+            Assert.AreEqual(128, val);
         }
     }
 }
